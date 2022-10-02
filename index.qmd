@@ -1,0 +1,26 @@
+---
+title: "My Dynamic Figure"
+author: "Jordan Greenhut"
+format: html
+editor: visual
+---
+
+```{r}
+data(mtcars)
+attach(mtcars)
+library(plotly)
+library(ggplot2)
+p<- mtcars%>%
+  ggplot(aes(x=hp, y=mpg,frame = cyl,color =wt,size=qsec)) +
+  labs(x="Horse Power", y = "Miles Per Gallon", 
+       caption = "Mtcars dataset",color = 'Weight (1000lbs)',size = "1/4 mile time")+
+  xlim(min(hp),max(hp))+
+  ylim(min(mpg),max(mpg))+
+  geom_point()
+
+ggplotly(p)
+
+
+colnames(mtcars)
+
+```
